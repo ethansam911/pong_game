@@ -54,7 +54,7 @@ ball.penup()
 #X Y coordinates
 ball.goto(0, 0)
 
-
+#Paddle A functionality!
 #Function - One piece at a time
 def paddle_a_up():
     y = paddle_a.ycor()
@@ -69,11 +69,29 @@ def paddle_a_down():
     y -= 20
     paddle_a.sety(y)
 
+#Paddle B functionality!
+
+
+def paddle_b_up():
+    y = paddle_b.ycor()
+    #Add 20 pixels
+    y += 20
+    paddle_b.sety(y)
+
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    #Subtract 20 pixels
+    y -= 20
+    paddle_b.sety(y)
 
 # Keyboard  bindings
 win.listen()
-win.onkeypress(paddle_a_up, "w")
-win.onkeypress(paddle_a_down, "s")
+win.onkeypress(paddle_a_up, "a")
+win.onkeypress(paddle_a_down, "d")
+
+win.onkeypress(paddle_b_up, "Left")
+win.onkeypress(paddle_b_down, "Right")
 
 #Old school programming methodology
 #Main game while loop
