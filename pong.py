@@ -54,6 +54,10 @@ ball.penup()
 #X Y coordinates
 ball.goto(0, 0)
 
+#Moves by two pixels
+ball.dx = 0.2
+ball.dy = -0.2
+
 #Paddle A functionality!
 #Function - One piece at a time
 def paddle_a_up():
@@ -70,8 +74,6 @@ def paddle_a_down():
     paddle_a.sety(y)
 
 #Paddle B functionality!
-
-
 def paddle_b_up():
     y = paddle_b.ycor()
     #Add 20 pixels
@@ -95,5 +97,27 @@ win.onkeypress(paddle_b_down, "Right")
 
 #Old school programming methodology
 #Main game while loop
+#Tabs and spaces matter!
 while True:
     win.update()
+
+#Move the ball
+#Current position plus the change
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    #Border checking Ceiling
+    if ball.ycor() > 290:
+        ball.sety(290)
+        #This reverses the direction
+        ball.dy *= -1
+
+    #Border checking Floor
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        #This reverses the direction
+        ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0,0)
+        ball.dx *=-1
