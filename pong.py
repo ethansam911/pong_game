@@ -32,7 +32,7 @@ paddle_a.shape("square")
 paddle_a.color("white")
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 paddle_a.penup()
-paddle_a.goto(-300, 0)
+paddle_a.goto(-350, 0)
 
 
 # Paddle B
@@ -42,7 +42,7 @@ paddle_b.shape("square")
 paddle_b.color("white")
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
-paddle_b.goto(+300, 0)
+paddle_b.goto(+350, 0)
 
 
 #Let's make the ball!
@@ -89,11 +89,11 @@ def paddle_b_down():
 
 # Keyboard  bindings
 win.listen()
-win.onkeypress(paddle_a_up, "a")
-win.onkeypress(paddle_a_down, "d")
+win.onkeypress(paddle_a_up, "w")
+win.onkeypress(paddle_a_down, "s")
 
-win.onkeypress(paddle_b_up, "Left")
-win.onkeypress(paddle_b_down, "Right")
+win.onkeypress(paddle_b_up, "Up")
+win.onkeypress(paddle_b_down, "Down")
 
 #Old school programming methodology
 #Main game while loop
@@ -127,3 +127,8 @@ while True:
         ball.dx *= -1
 
 # Paddle and ball collisions
+# This should be 10 pixels before the paddle
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+        #Moves the ball to the left a bit
+        ball.setx(340)
+        ball.dx *=-1
