@@ -7,7 +7,7 @@ import os
 win = turtle.Screen()
 win.title("Pong by Ethan")
 
-win.bgcolor("black")
+win.bgcolor("blue")
 
 win.setup(width=800, height=600)
 #Stops window from updating
@@ -48,8 +48,8 @@ paddle_b.goto(+350, 0)
 #Let's make the ball!
 ball = turtle.Turtle()
 ball.speed(0)
-ball.shape("square")
-ball.color("white")
+ball.shape("circle")
+ball.color("red")
 ball.penup()
 #X Y coordinates
 ball.goto(0, 0)
@@ -57,6 +57,15 @@ ball.goto(0, 0)
 #Moves by two pixels
 ball.dx = 0.2
 ball.dy = -0.2
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Plater 1: 0 Player 2: 0", align="center", font=("Arial", 24, "normal"))
 
 #Paddle A functionality!
 #Function - One piece at a time
@@ -127,8 +136,14 @@ while True:
         ball.dx *= -1
 
 # Paddle and ball collisions
-# This should be 10 pixels before the paddle
+# This should be 10 pixels
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
         #Moves the ball to the left a bit
         ball.setx(340)
         ball.dx *=-1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+        #Moves the ball to the left a bit
+        #should be -340 because 340 is the right side
+        ball.setx(-340)
+        ball.dx *= -1
