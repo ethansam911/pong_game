@@ -13,6 +13,11 @@ win.setup(width=800, height=600)
 #Stops window from updating
 win.tracer(0)
 
+#Score
+score_1 = 0
+score_2 = 0
+
+
 #0 0 is at the center
 #-300 down, -400 left, +400 right, +300 up
 
@@ -30,7 +35,7 @@ paddle_a = turtle.Turtle()
 paddle_a.speed(0)
 paddle_a.shape("square")
 paddle_a.color("white")
-paddle_a.shapesize(stretch_wid=5, stretch_len=1)
+paddle_a.shapesize(stretch_wid=8, stretch_len=1)
 paddle_a.penup()
 paddle_a.goto(-350, 0)
 
@@ -40,7 +45,7 @@ paddle_b = turtle.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
 paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+paddle_b.shapesize(stretch_wid=8, stretch_len=1)
 paddle_b.penup()
 paddle_b.goto(+350, 0)
 
@@ -53,19 +58,19 @@ ball.color("red")
 ball.penup()
 #X Y coordinates
 ball.goto(0, 0)
-
 #Moves by two pixels
 ball.dx = 0.2
 ball.dy = -0.2
 
-# Pen
+# Pen for scoreboard
 pen = turtle.Turtle()
 pen.speed(0)
 pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-pen.write("Plater 1: 0 Player 2: 0", align="center", font=("Arial", 24, "normal"))
+pen.write("Player 1: 0         Player 2: 0", align="center", font=("Arial", 24, "normal"))
+
 
 #Paddle A functionality!
 #Function - One piece at a time
@@ -130,20 +135,30 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0,0)
         ball.dx *=-1
+        score_1 +=1
+        #Clear the previous writing
+        pen.clear()
+        pen.write("Player 1: {}         Player 2: {}".format(score_1, score_2),
+                  align="center", font=("Arial", 24, "normal"))
+
     
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_2 += 1
+        pen.clear()
+        pen.write("Player 1: {}         Player 2: {}".format(score_1, score_2),
+                  align="center", font=("Arial", 24, "normal"))
 
 # Paddle and ball collisions
 # This should be 10 pixels
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 60 and ball.ycor() > paddle_b.ycor() - 60):
         #Moves the ball to the left a bit
-        ball.setx(340)
+        ball.setx(335)
         ball.dx *=-1
 
-    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 60 and ball.ycor() > paddle_a.ycor() - 60):
         #Moves the ball to the left a bit
         #should be -340 because 340 is the right side
-        ball.setx(-340)
+        ball.setx(-335)
         ball.dx *= -1
