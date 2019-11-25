@@ -59,8 +59,8 @@ ball.penup()
 #X Y coordinates
 ball.goto(0, 0)
 #Moves by two pixels
-ball.dx = 0.2
-ball.dy = -0.2
+ball.dx = 0.4
+ball.dy = -0.4
 
 # Pen for scoreboard
 pen = turtle.Turtle()
