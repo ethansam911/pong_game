@@ -28,7 +28,7 @@ score_2 = 0
 #Pygame is good for full-fledged games but turtles are better for beginners
 
 
-# Paddle A
+# Paddle A   
 #Capital T for class name
 #lowercase t for module turtle
 paddle_a = turtle.Turtle()
@@ -102,7 +102,7 @@ def paddle_b_down():
     paddle_b.sety(y)
 
 # Keyboard  bindings
-win.listen()
+win.listen()   
 win.onkeypress(paddle_a_up, "w")
 win.onkeypress(paddle_a_down, "s")
 
