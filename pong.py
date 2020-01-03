@@ -2,7 +2,7 @@
 #turtle module getting started with games
 import turtle
 import os
-
+   
 #Screen capitalized
 win = turtle.Screen()
 win.title("Pong by Ethan")
