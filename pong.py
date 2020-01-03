@@ -13,7 +13,7 @@ win.setup(width=800, height=600)
 #Stops window from updating
 win.tracer(0)
 
-#Score
+#Score   
 score_1 = 0
 score_2 = 0
 
